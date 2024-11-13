@@ -19,22 +19,40 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
+    console.log(humanChoice, computerChoice)
     if (humanChoice === computerChoice) {
-        return "it's a draw"
+        console.log('Draw')
     }
-    if (humanChoice == "paper" && computerChoice == "rock") 
-        or (humanChoice == "rock" && computerChoice == "scissors") 
-        or (humanChoice == 'scissors' && computerChoice == "paper")
+    else if ((humanChoice === "paper" && computerChoice === "rock") 
+        || (humanChoice === "rock" && computerChoice === "scissors") 
+        || (humanChoice === "scissors" && computerChoice === "paper")) {
         humanScore += 1;
-        return "You win!"
-}
-    if (computerChoice == "paper" && humanChoice == "rock") 
-        or (computerChoice == "rock" && humanChoice == "scissors")
-        or (computerChoice == "scissors" && humanChoice == "paper") {
+        console.log("You win!")
+    }
+    else if ((computerChoice === "paper" && humanChoice === "rock") 
+        || (computerChoice === "rock" && humanChoice === "scissors")
+        || (computerChoice === "scissors" && humanChoice === "paper")) {
         computerScore += 1;
-        return "Computer wins!"
+        console.log("Computer wins!")
 
     }
+    else {
+        console.log("invalid input")
+    }
+}
+
 
 let humanScore = 0
 let computerScore = 0
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(),getComputerChoice());
+        console.log(`Your score is: ${humanScore}, Computers score: ${computerScore}`)
+    }
+    humanScore = 0
+    computerScore = 0  
+}
+
+playGame();
+
